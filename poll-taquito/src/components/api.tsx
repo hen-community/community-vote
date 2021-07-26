@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 const queryBadgeCheck = `query BadgeCheck($wallet: String = "") {
     hic_et_nunc_token(where: {id: {_eq: "93229"}}) {
       metadata
@@ -24,19 +26,29 @@ async function fetchGraphQL(operationsDoc: string, operationName: string, variab
     return await result.json();
 }
 
-export async function checkBadge(wallet: string) {
+export async function checkBadge(address: string) {
     const {
         errors,
         data
     } = await fetchGraphQL(queryBadgeCheck, "BadgeCheck", {
-        "wallet": wallet
+        "wallet": address
     });
-    if (errors) {
-        console.error(errors);
-    }
+    if (errors) console.error(errors);
+
     const result = data.hic_et_nunc_token[0].token_holders.length > 0;
-    console.log({
-        result
-    })
     return result
+}
+export async function getTzProfiles(address: string) {
+    return await axios.post('https://indexer.tzprofiles.com/v1/graphql', {
+      query: `query MyQuery { tzprofiles_by_pk(account: "${address}") { valid_claims } }`,
+      variables: null,
+      operationName: 'MyQuery',
+    })
+}
+
+export async function hasTzProfiles(address: string) {
+    await getTzProfiles(address).then(res => {
+        return typeof res.data.tzprofiles_by_pk !== 'undefined';
+    });
+    return false;
 }

@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
-import { checkBadge } from './api';
+import { checkBadge, hasTzProfiles } from './api';
 
 export default function Nav() {
   // const { ... } = useParams();
@@ -15,8 +15,14 @@ export default function Nav() {
         <Link to="/" style={{flex:1,color:'white',fontWeight:'bold',textDecoration:'none'}}>HICVOTE</Link>
         {activeAccount ? (
           <>
-            {activeAccount.address}
-            <Button color="inherit" onClick={()=>checkBadge(activeAccount.address) }>
+            {activeAccount.address} (votes: 
+            {checkBadge(activeAccount.address)?'1':'x'}
+            {hasTzProfiles(activeAccount.address)?'2':'x'}
+            )
+            <Button color="inherit" onClick={()=>console.log([
+                checkBadge(activeAccount.address),
+                hasTzProfiles(activeAccount.address)
+              ]) }>
               Check Badge
             </Button>
             <Button color="inherit" onClick={disconnect}>
