@@ -1,8 +1,9 @@
 .syncMenu-contents {
   position: absolute;
-  right: 0;
-  top: 0;
-  left: 0;
+  right: 10px;
+  top: 10px;
+  /* left: 0; */
+  width: 300px;
   bottom: 0;
   background: var(--gray-0);
 }
@@ -63,8 +64,12 @@
   }
 
   .syncMenu-mobileOnly {
-    padding: calc(var(--grid-unit) * 2);
-    background: var(--gray-20);
+    display: none;
+  }
+  
+  .syncMenu-contents {
+    right: -20px;
+    top: -20px;
   }
 
   .syncMenu-mainOptions {
