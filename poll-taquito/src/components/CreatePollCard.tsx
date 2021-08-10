@@ -11,14 +11,7 @@ import { createPoll } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
 
-
-// async function getNextPollId() {
-//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
-//     .then(response => response.json())
-//     .then(polls => {
-//       return polls.length + 1
-//     });
-// }
+import { DefaultEditor } from 'react-simple-wysiwyg';
 
 export default function CreatePollCard() {
   const { connected } = useWallet();
@@ -33,17 +26,14 @@ export default function CreatePollCard() {
       .required("Required"),
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
-    description: Yup.string().required("Required"),
     discourse: Yup.string().url().required("Required")
   });
-  // const [nextPollId, setNextPollId] = React.useState("1");
-  // React.useEffect(() => {
-  //   getNextPollId()
-  //     .then(pollId =>{
-  //       setNextPollId(pollId.toString())
-  //     })
-  //     .catch(err => console.error(err));
-  // }, []);
+  
+  const [editorHtml, setEditorHtml] = React.useState('');
+  
+  function onChangeEditor(e: any) {
+    setEditorHtml(e.target.value);
+  }
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -55,7 +45,7 @@ export default function CreatePollCard() {
           values.title,
           {
             discourse: values.discourse,
-            description: values.description,
+            description: editorHtml,
             opt1: values.opt1,
             opt1desc: values.opt1desc,
             opt2: values.opt2,
@@ -159,15 +149,17 @@ export default function CreatePollCard() {
                     fullWidth
                   />
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Field
                     name="description"
                     as="textarea"
                     label="Description"
-                    fullWidth
                     placeholder="Description"
-                    style={{width: "100%", fontSize: '1em', padding: '0.5em', resize: 'vertical'}}
+                    style={{display: 'none', width: "100%", fontSize: '1em', padding: '0.5em', resize: 'vertical'}}
                   />
+                </Grid> */}
+                <Grid item>
+                  <DefaultEditor value={editorHtml} onChange={ onChangeEditor } />
                 </Grid>
                 <Grid container item spacing={3}>
                   <Grid item md>
