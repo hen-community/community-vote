@@ -41,4 +41,4 @@ export const About = () => {
       </section>
     </article>
   );
-};
+}
