@@ -31,14 +31,14 @@ export const ResultsGraph = ({...props}) => {
           key={i} 
           className={
             "proposalDetail-graph-label "+
-            (
+            resultsData && (
               (parseInt(
                 Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
               ) === (i+1)) ? 'winner' : ''
             ) 
           }
           style={{
-            border: "3px solid "+((parseInt(
+            border: "3px solid "+ resultsData && ((parseInt(
               Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
             ) === (i+1))?"black":`hsl(${i*36} 67% 75%)`)
           }}>

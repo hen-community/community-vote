@@ -50,7 +50,7 @@ export const VoteButton = ({...props}) => {
   }
   return (
     <Button
-      voted={ props.myvote === props.optionNumber }
+      voted={ props.myvote === props.optionNumber ? 'true' : 'false' }
       winner={props.winner}
       disabled={ props.disabled }
       className={props.className}

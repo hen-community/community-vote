@@ -193,3 +193,11 @@
 .proposalDetail-multi {
 
 } */
+
+.voteRow-list {
+  padding-inline-start: 0;
+  padding: 0;
+}
+.voteRow {
+  list-style: none;
+}
