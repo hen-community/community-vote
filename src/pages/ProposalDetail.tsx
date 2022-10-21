@@ -207,7 +207,7 @@ export const ProposalDetail = (props: any) => {
               />
             </div>
              { votePower.henOG || (
-               <span>Sync your teia wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued (11/11/21).</span>
+               <span>Sync your teia wallet to vote.</span>
               ) }
           </footer>
         ) : (
