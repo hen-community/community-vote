@@ -115,31 +115,31 @@ function App() {
           votePower.count++
           votePower.tzprof = true
         }
-      },
+      }),
       checkBadge(address).then(has => {
         if (has) {
           votePower.count++
           votePower.badge = true
         }
-      },
+      }),
       checkHDAO(address).then(has =>  {
         if (has) {
           votePower.count++
           votePower.hDAO = true
         }
-      },
+      }),
       checkHenOG(address).then(has =>  {
         if (has) {
           votePower.count++
           votePower.henOG = true
         }
-      },
+      }),
       checkTeia22(address).then(has =>  {
         if (has) {
           votePower.count++
           votePower.teia22 = true
         }
-      }
+      })
     ]).then(() => {
       setVotePower(votePower);
     }).catch(err => {
