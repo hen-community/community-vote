@@ -20,7 +20,7 @@ export const Profile = (props: any) => {
             <span><IconAgainst/> This wallet is not eligible to vote in the latest poll.</span>        
           }
         </div>
-        <a href="https://discourse.teia.art/t/vote-discussion-total-supply-of-teia-dao-tokens/625" target="_blank">More info about vote eligibility.</a>
+        <a href="https://discourse.teia.art/t/vote-discussion-total-supply-of-teia-dao-tokens/625" target="_blank" rel="noreferrer">More info about vote eligibility.</a>
         {/*
         <span style={{opacity: props.votes.teia23?'1.0':'0.5'}}>Teia Users 2023 { props.votes.teia23?<IconFor/>:<IconAgainst/>}</span>
         <span style={{opacity: props.votes.tzprof?'1.0':'0.5'}}>{ props.votes.tzprof?<IconFor/>:<IconAgainst/>} Tezos Profiles</span>
