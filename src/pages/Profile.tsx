@@ -1,6 +1,6 @@
 import '../assets/styles/utility-classes.css';
 import './profile.css';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { ReactComponent as IconFor } from '../assets/icons/vote-for.svg';
 import { ReactComponent as IconAgainst } from '../assets/icons/vote-against.svg';
